@@ -1,0 +1,8 @@
+dist/
+node_modules/
+tsconfig.tsbuildinfo
+client_secret_*
+monitorConfig.json
+googleAuth.json
+tokens.json
+.env
