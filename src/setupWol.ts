@@ -15,20 +15,24 @@ interface WolHostDetails extends HostDetails {
     };
 }
 
+function isWolParam(param: Record<string, any>): param is WolParam {
+    return param.hosts != null && Array.isArray(param.hosts);
+}
+
 export function setupWol(monitor: NetworkMonitor, config: WolConfig): WOL {
     const wol = new WOL(config.wol.broadcastAddress);
 
     const hostsByName = monitor.hostMonitors.reduce((map, monitor) => map.set(monitor.name, monitor), new Map<string, HostMonitor>());
 
-    monitor.eventEmitter.addListener("wol", async (details, param: WolParam) => {
-        if (param == null) {
+    monitor.eventEmitter.addListener("wol", async (details, param) => {
+        if (param == null || !isWolParam(param)) {
             throw new Error("WOL tasks require a parameter in the form { hosts: string[] }");
         }
 
         try {
             const promises: Promise<boolean>[] = [];
             for (const host of param.hosts) {
-                const details = hostsByName.get(host)?.getHostDetails() as WolHostDetails | undefined;
+                const details = hostsByName.get(host)?.getDetails() as WolHostDetails | undefined;
                 if (details == null) {
                     throw new Error(`WOL task was configured to wake a host by the name of '${host}', but no host by that name could be found`);
                 }

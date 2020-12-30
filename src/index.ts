@@ -20,7 +20,7 @@ function loadConfig(): Config {
     return JSON.parse(contents) as Config;
 }
 
-async function run() {
+async function run(): Promise<void> {
     const config = loadConfig();
     const monitor = await setupMonitor(config);
     chokidar.watch(configPath).on("change", () => {

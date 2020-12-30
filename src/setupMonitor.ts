@@ -19,16 +19,16 @@ function checkForMissingProperties<T extends Record<string, any>>(name: string, 
 export async function setupMonitor(config: Config): Promise<NetworkMonitor> {
     const monitor = new NetworkMonitor(config);
 
-    const wolConfig = config as WolConfig;
-    if (wolConfig.wol != null && wolConfig.wol.enabled !== false) {
-        checkForMissingProperties("WOL settings", wolConfig.wol, "broadcastAddress");
-        setupWol(monitor, wolConfig);
-    }
-
     const homeConfig = config as GoogleHomeConfig;
     if (homeConfig.googleHome != null) {
         checkForMissingProperties("Google Home settings", homeConfig.googleHome, "keyFilePath", "savedTokensPath");
         await setupGoogleHome(monitor, homeConfig);
+    }
+
+    const wolConfig = config as WolConfig;
+    if (wolConfig.wol != null && wolConfig.wol.enabled !== false) {
+        checkForMissingProperties("WOL settings", wolConfig.wol, "broadcastAddress");
+        setupWol(monitor, wolConfig);
     }
 
     await monitor.startMonitoring();

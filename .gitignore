@@ -6,3 +6,4 @@ monitorConfig.json
 googleAuth.json
 tokens.json
 .env
+.eslintcache

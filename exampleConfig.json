@@ -1,0 +1,71 @@
+{
+    "defaults": {
+        "hostPingRate": 15000,
+        "hostPingRetries": 3,
+        "networkPingRate": 1000,
+        "networkPingRetries": 3,
+        "logHostConnectivityChanges": true,
+        "logTasks": true
+    },
+    "hosts": [
+        {
+            "name": "My First PC",
+            "address": "192.168.1.2",
+            "onConnected": [
+                {
+                    "name": "home",
+                    "delay": 60000,
+                    "dateRanges": [
+                        {
+                            "dayStart": 1,
+                            "dayEnd": 5,
+                            "timeRanges": [
+                                {
+                                    "timeStart": 1020,
+                                    "timeEnd": 1140
+                                }
+                            ]
+                        }
+                    ],
+                    "param": {
+                        "command": "Do the thing."
+                    }
+                }
+            ]
+        },
+        {
+            "name": "My Second PC",
+            "address": "192.168.1.3"
+        },
+        {
+            "name": "My Third PC",
+            "address": "192.168.1.4",
+            "wol": {
+                "mac": "01:23:45:67:89:AB",
+                "port": 9
+            },
+            "logConnectivityChanges": false
+        }
+    ],
+    "groups": [
+        {
+            "name": "computers",
+            "hosts": ["My First PC", "My Second PC"],
+            "allDisconnected": [
+                {
+                    "name": "wol",
+                    "param": {
+                        "hosts": ["My Third PC"]
+                    }
+                }
+            ]
+        }
+    ],
+    "connectionMonitor": {
+        "gatewayAddress": "192.168.1.1",
+        "logConnectivityChanges": true
+    },
+    "wol": {
+        "broadcastAddress": "255.255.255.255"
+    }
+}

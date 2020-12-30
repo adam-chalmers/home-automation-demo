@@ -5,5 +5,6 @@ export interface GoogleHomeConfig extends Config {
         keyFilePath: string;
         savedTokensPath: string;
         logOnReady?: boolean;
+        timeout?: number;
     };
 }
