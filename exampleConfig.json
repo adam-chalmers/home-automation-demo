@@ -67,5 +67,11 @@
     },
     "wol": {
         "broadcastAddress": "255.255.255.255"
+    },
+    "googleHome": {
+        "keyFilePath": "./keyFile.json",
+        "savedTokensPath": "tokens.json",
+        "timeout": 5000,
+        "logOnReady": true
     }
 }
