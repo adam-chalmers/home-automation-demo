@@ -24,7 +24,7 @@ function loadConfig(): DemoConfig {
 }
 
 async function addEventsAndStartMonitoring(monitor: NetworkMonitor, config: DemoConfig): Promise<void> {
-    if (config.googleHome != null) {
+    if (config.googleHome != null && config.googleHome.enabled) {
         const home = await setupGoogleHome(config.googleHome);
         attachHomeEvents(home, monitor);
     }

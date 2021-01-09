@@ -8,7 +8,7 @@ To run this demo and have it integrate with a Google Home on the local network, 
 
 ## Configuration
 
-This demo aims to be highly configurable by way of a configuration file, with multiple sections controlling various actions. An example configuration file, `exampleConfig.json` is included in this repository and is a good place to start.
+This demo aims to be highly configurable by way of a configuration file, with multiple sections controlling various actions. An example configuration file, `exampleConfig.json` is included in this repository and is a good place to start. The configuration file location is specified by the `NETWORK_MONITOR_CONFIG_PATH` environment variable, which is a relative path to the config file. The config file is set up to be watched, so any changes to the config file will cause the monitors to be reloaded, as if the application was exited and run again.
 
 ##### Network Monitor Configuration
 
