@@ -1,8 +1,4 @@
-import { Config } from "@adam-chalmers/network-monitor";
-
-export interface WolConfig extends Config {
-    wol: {
-        broadcastAddress: string;
-        enabled?: boolean;
-    };
+export interface WolConfig {
+    broadcastAddress: string;
+    enabled?: boolean;
 }

@@ -3,6 +3,7 @@ import { NetworkMonitor } from "@adam-chalmers/network-monitor";
 import { HostMonitor } from "@adam-chalmers/network-monitor/dist/hostMonitor";
 import { HostDetails } from "@adam-chalmers/network-monitor/dist/types/hostDetails";
 import { WolConfig } from "./types/wolConfig";
+import { checkForMissingProperties } from "./argsHelper";
 
 interface WolParam {
     hosts: string[];
@@ -19,9 +20,7 @@ function isWolParam(param: Record<string, any>): param is WolParam {
     return param.hosts != null && Array.isArray(param.hosts);
 }
 
-export function setupWol(monitor: NetworkMonitor, config: WolConfig): WOL {
-    const wol = new WOL(config.wol.broadcastAddress);
-
+export function attachEvents(wol: WOL, monitor: NetworkMonitor): void {
     const hostsByName = monitor.hostMonitors.reduce((map, monitor) => map.set(monitor.name, monitor), new Map<string, HostMonitor>());
 
     monitor.eventEmitter.addListener("wol", async (details, param) => {
@@ -47,6 +46,9 @@ export function setupWol(monitor: NetworkMonitor, config: WolConfig): WOL {
             console.error(`Error sending WOL packet: ${err?.message}`);
         }
     });
+}
 
-    return wol;
+export function setupWol(config: WolConfig): WOL {
+    checkForMissingProperties("WOL settings", config, "broadcastAddress");
+    return new WOL(config.broadcastAddress);
 }
