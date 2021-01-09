@@ -22,7 +22,6 @@
         "start:debug": "node --inspect -r ts-node/register ./src/index.ts",
         "start": "node ./dist/index.js",
         "prepare": "yarn clean && yarn build",
-        "deploy": "yarn publish",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "devDependencies": {
@@ -36,9 +35,9 @@
         "typescript": "^4.1.3"
     },
     "dependencies": {
-        "@adam-chalmers/google-home": "^1.0.0",
-        "@adam-chalmers/network-monitor": "^1.0.1",
-        "@adam-chalmers/wol": "^1.0.0",
+        "@adam-chalmers/google-home": "^1.0.2",
+        "@adam-chalmers/network-monitor": "^1.0.6",
+        "@adam-chalmers/wol": "^1.0.3",
         "chokidar": "^3.4.3",
         "dotenv": "^8.2.0"
     }

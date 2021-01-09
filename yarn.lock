@@ -2,24 +2,24 @@
 # yarn lockfile v1
 
 
-"@adam-chalmers/google-home@^1.0.0":
-  version "1.0.0"
-  resolved "https://npm.pkg.github.com/download/@adam-chalmers/google-home/1.0.0/e7d3c202b0fd5704762491a74bc7eb0caccacf9cfaf0a6fc6a3784c45642c30e#2d037332fdb16cf41a5dfab9344825dd133b3666"
-  integrity sha512-Lr4tqlsh7rPfKA8y+mILWw5d7DiL4LMFQJGVmaOKe5ukSJZVWPoFuQn3G5CEbruDvY9nfoKHt2bgFiWJXuNmMw==
+"@adam-chalmers/google-home@^1.0.2":
+  version "1.0.2"
+  resolved "https://npm.pkg.github.com/download/@adam-chalmers/google-home/1.0.2/744cdcd5b5e898df925df9ad2651b8e65de4a958482b192f344ea72830d5f273#c783765d2b8ba6100c94c83ece3edbca00a47deb"
+  integrity sha512-OYcEuTyJUfegaSPBe37H5MBddu+jQkzIu1gms3R6aNcaHu0BujHybJtT0H81E2G0Skk7+hEi7rXHmyJhJ5yhxQ==
   dependencies:
     google-assistant "^0.6.4"
 
-"@adam-chalmers/network-monitor@^1.0.1":
-  version "1.0.1"
-  resolved "https://npm.pkg.github.com/download/@adam-chalmers/network-monitor/1.0.1/e7d664badbea327f8854a5a04f071cceb2fe9e44a998d835c7ee7efed3e6cbdf#1c262104de5bd70936c8b0c16a36ee9cd566370e"
-  integrity sha512-uGqopF2T1os6sJ56VAKWZmiPYCBjdSQ/bnOhFls+vKMUUb2EjBeOJUZ0X7Fl7JpVLseP59YZvUAdPzNThv+QPA==
+"@adam-chalmers/network-monitor@^1.0.6":
+  version "1.0.6"
+  resolved "https://npm.pkg.github.com/download/@adam-chalmers/network-monitor/1.0.6/602959561813f1cc1d3d7446f60a270db4fd0440e53f8c0369433a6a66befe86#fb81d3e590489c4718576792c42d94f62856d1a9"
+  integrity sha512-QTayvVZW/BuGtkhNNGH/SRH9CVmvu52+127LVRr3/UxJfBhSIGPKFHI+ZuCqsUWrhsgc7G08kOMdQOdKTJ62Qw==
   dependencies:
     ping "^0.4.0"
 
-"@adam-chalmers/wol@^1.0.0":
-  version "1.0.0"
-  resolved "https://npm.pkg.github.com/download/@adam-chalmers/wol/1.0.0/946dab5396c618ab9800a092aca48410012c8dd047e34e5b05e91192c5d12967#8ff100603f6fdcd8996e14f141b38f5f89f66fce"
-  integrity sha512-cc2XxseTMLEUuSeuUQ4cPsx/nSNl0vjGxFeCCDrWfpBp69iuwqE9pkGZcCPIt39rowoI9u0Yj71qBvvhp2Ckyw==
+"@adam-chalmers/wol@^1.0.3":
+  version "1.0.3"
+  resolved "https://npm.pkg.github.com/download/@adam-chalmers/wol/1.0.3/e5a6098d9ffc5bbe8b4865b313595e1180b90e12bfa631e563b0d56d8f6d3a48#a9ff0169dffa8c0c86b7e8b46eba85232e296c3f"
+  integrity sha512-UOpEIho1cMIosmhX1V/Cv47Z/r/OcrRfDtoL1tEN4vQLMdA/SoI48a/Uyz6yCH0MG+B5YDEwEEXIS2HyB/p5kQ==
   dependencies:
     wol "^1.0.7"
 
