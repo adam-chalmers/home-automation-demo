@@ -12,7 +12,7 @@ export function getEnvironmentVariables<T extends string>(...variables: T[]): { 
     }
 
     if (missing.length > 0) {
-        throw new Error(`Environment variable(s) were not defined: ${variables.join(",")}`);
+        throw new Error(`Environment variable(s) were not defined: ${variables.join(", ")}`);
     }
 
     return obj as { [key in T]: string };

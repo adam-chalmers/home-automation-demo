@@ -7,3 +7,4 @@ googleAuth.json
 tokens.json
 .env
 .eslintcache
+coverage/

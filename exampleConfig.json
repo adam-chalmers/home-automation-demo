@@ -52,7 +52,7 @@
             {
                 "name": "computers",
                 "hosts": ["My First PC", "My Second PC"],
-                "allDisconnected": [
+                "onAllDisconnected": [
                     {
                         "name": "wol",
                         "param": {

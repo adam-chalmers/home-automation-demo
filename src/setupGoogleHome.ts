@@ -11,8 +11,9 @@ function isGoogleHomeParam(param: Record<string, any>): param is GoogleHomeParam
     return param.command != null && typeof param.command === "string";
 }
 
-export function attachEvents(home: GoogleHome, monitor: NetworkMonitor): void {
+export function attachEvents(monitor: NetworkMonitor, home: GoogleHome): void {
     monitor.eventEmitter.addListener("home", async (details, param) => {
+        console.log("Home");
         if (param == null || !isGoogleHomeParam(param)) {
             throw new Error("Google Home tasks require a parameter in the form { command: string }");
         }

@@ -1,4 +1,4 @@
-import { WOL } from "@adam-chalmers/wol";
+import { wakeHost, Host as WolHost } from "@adam-chalmers/wol";
 import { NetworkMonitor } from "@adam-chalmers/network-monitor";
 import { HostMonitor } from "@adam-chalmers/network-monitor/dist/hostMonitor";
 import { HostDetails } from "@adam-chalmers/network-monitor/dist/types/hostDetails";
@@ -16,11 +16,13 @@ interface WolHostDetails extends HostDetails {
     };
 }
 
+type WolFunc = (host: WolHost) => Promise<boolean>;
+
 function isWolParam(param: Record<string, any>): param is WolParam {
     return param.hosts != null && Array.isArray(param.hosts);
 }
 
-export function attachEvents(wol: WOL, monitor: NetworkMonitor): void {
+export function attachEvents(monitor: NetworkMonitor, wakeFunction: WolFunc): void {
     const hostsByName = monitor.hostMonitors.reduce((map, monitor) => map.set(monitor.name, monitor), new Map<string, HostMonitor>());
 
     monitor.eventEmitter.addListener("wol", async (details, param) => {
@@ -39,7 +41,7 @@ export function attachEvents(wol: WOL, monitor: NetworkMonitor): void {
                     throw new Error(`No WOL configuration was found for host ${host}`);
                 }
 
-                promises.push(wol.sendPacket({ mac: details.wol.mac, port: details.wol.port }));
+                promises.push(wakeFunction({ mac: details.wol.mac, port: details.wol.port }));
             }
             await Promise.all(promises);
         } catch (err) {
@@ -48,7 +50,7 @@ export function attachEvents(wol: WOL, monitor: NetworkMonitor): void {
     });
 }
 
-export function setupWol(config: WolConfig): WOL {
+export function setupWol(config: WolConfig): WolFunc {
     checkForMissingProperties("WOL settings", config, "broadcastAddress");
-    return new WOL(config.broadcastAddress);
+    return (host) => wakeHost(host, config.broadcastAddress);
 }
