@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import fs from "fs";
+import path from "path";
 import chokidar from "chokidar";
 import { EventEmitter } from "events";
 import * as envHelper from "../src/envHelper";
@@ -9,6 +10,7 @@ import { GoogleHome } from "@adam-chalmers/google-home";
 import * as monitorModule from "@adam-chalmers/network-monitor";
 import * as setupWolModule from "../src/setupWol";
 import * as setupHomeModule from "../src/setupGoogleHome";
+import { WolConfig } from "../src/types/wolConfig";
 
 jest.mock("@adam-chalmers/google-home");
 jest.mock("@adam-chalmers/network-monitor");
@@ -54,12 +56,19 @@ describe("@adam-chalmers/home-automation-demo @unit runDemo.ts", () => {
 
     let watchSpy: jest.SpyInstance<chokidar.FSWatcher, Parameters<typeof chokidar.watch>>;
     let existsSyncSpy: jest.SpyInstance<boolean, Parameters<typeof fs.existsSync>>;
+    let chokidarEmitter: chokidar.FSWatcher;
+
+    const configPath = "./monitorConfig.json";
 
     beforeEach(() => {
-        jest.spyOn(envHelper, "getEnvironmentVariables").mockImplementation(() => ({ NETWORK_MONITOR_CONFIG_PATH: "" }));
+        jest.spyOn(envHelper, "getEnvironmentVariables").mockImplementation(() => ({ NETWORK_MONITOR_CONFIG_PATH: configPath }));
         // We only use .on("change") from the FSWatcher so we can safely mock it using a simple event emitter and emit the "change" event for testing purposes
-        watchSpy = jest.spyOn(chokidar, "watch").mockImplementation(() => (new EventEmitter() as unknown) as chokidar.FSWatcher);
+        watchSpy = jest.spyOn(chokidar, "watch").mockImplementation(() => {
+            chokidarEmitter = (new EventEmitter() as unknown) as chokidar.FSWatcher;
+            return chokidarEmitter;
+        });
         existsSyncSpy = jest.spyOn(fs, "existsSync").mockImplementation(() => true);
+        jest.spyOn(console, "log").mockImplementation(() => {}); // Silence logging
     });
 
     afterEach(() => {
@@ -147,13 +156,30 @@ describe("@adam-chalmers/home-automation-demo @unit runDemo.ts", () => {
         expect(constructorSpy).toBeCalledWith(config.monitor);
     });
 
-    // TODO: mock the envHelper and make it return a path that can be used to check that the watcher was given the correct file path
     it("Should set up a watcher on the config file", async () => {
         setup(config);
         await run();
         expect(watchSpy).toBeCalledTimes(1);
-        expect(watchSpy).toBeCalledWith();
+        expect(watchSpy).toBeCalledWith(path.join(__dirname, "..", configPath));
     });
 
-    //TODO: test that the reloading works as expected
+    it("Should reload the config on change", async () => {
+        const setupSpy = jest.spyOn(setupWolModule, "setupWol").mockImplementation(() => () => Promise.resolve(true));
+        const attachEventsSpy = jest.spyOn(setupWolModule, "attachEvents").mockImplementation(() => {});
+
+        setup(config);
+        await run();
+
+        // Expect wol to have not been set up since default config doesn't have a wol configuration
+        expect(setupSpy).toHaveBeenCalledTimes(0);
+        expect(attachEventsSpy).toHaveBeenCalledTimes(0);
+
+        const wolConfig: WolConfig = { broadcastAddress: "" };
+        setup({ ...config, wol: wolConfig });
+        chokidarEmitter.emit("change");
+
+        // Expect wol to have now been set up since the newly defined config does have a wol configuration
+        expect(setupSpy).toHaveBeenCalledTimes(1);
+        expect(attachEventsSpy).toHaveBeenCalledTimes(1);
+    });
 });
