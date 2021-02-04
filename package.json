@@ -41,9 +41,9 @@
         "typescript": "^4.1.3"
     },
     "dependencies": {
-        "@adam-chalmers/google-home": "^1.0.2",
-        "@adam-chalmers/network-monitor": "^1.0.8",
-        "@adam-chalmers/wol": "^1.0.3",
+        "@adam-chalmers/google-home": "^1.0.3",
+        "@adam-chalmers/network-monitor": "^1.0.9",
+        "@adam-chalmers/wol": "^1.0.4",
         "chokidar": "^3.4.3",
         "dotenv": "^8.2.0"
     }
