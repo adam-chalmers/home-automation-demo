@@ -45,7 +45,7 @@ export function attachEvents(monitor: NetworkMonitor, wakeFunction: WolFunc): vo
             }
             await Promise.all(promises);
         } catch (err) {
-            console.error(`Error sending WOL packet: ${err?.message}`);
+            console.error(`Error sending WOL packet: ${err.message}`);
         }
     });
 }

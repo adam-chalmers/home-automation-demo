@@ -2,24 +2,24 @@
 # yarn lockfile v1
 
 
-"@adam-chalmers/google-home@^1.0.3":
-  version "1.0.3"
-  resolved "https://npm.pkg.github.com/download/@adam-chalmers/google-home/1.0.3/20e9b76ba800840a2087e24a9dfe456139716a9035bd2618fa49415cebbd02f3#7b24e7e905cae8e931f7e499b7e038ecc64c22ff"
-  integrity sha512-oIGeJqkWjrY5y5y2NAFR6HcPCOGVh0WysNj1P0pl6t0eimQ/DtlRdnQDLelcSkZADd/J+XdxEKjs6rqEBh9VlA==
+"@adam-chalmers/google-home@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@adam-chalmers/google-home/-/google-home-1.0.4.tgz#d4d8ebf610f5d2bde4bf4dc5fbb340c9ecb46e16"
+  integrity sha512-W//osDUgQ3IFuSKhj+xk80WyAbjSFTl89aHRrgTfDz7psrwRu0Y5UjoOenNcJiCYpowH3JTFrBI6zl80l3omyA==
   dependencies:
     google-assistant "^0.6.4"
 
 "@adam-chalmers/network-monitor@^1.0.9":
   version "1.0.9"
-  resolved "https://npm.pkg.github.com/download/@adam-chalmers/network-monitor/1.0.9/fd8d03a04342b907db1fd3cdc047fa28c1f16c275dcd5944fcc83633e2864129#1fb6d768d60425d89d52214f9565436ce911d176"
-  integrity sha512-90qPkSVoZaC3XaeYhTZkUAglYp0S2kkFhq8X3fWaWXw0/VrUs0hHY08WzivD0BuzkmY2rsKD4KtfeWFtszFUHQ==
+  resolved "https://registry.yarnpkg.com/@adam-chalmers/network-monitor/-/network-monitor-1.0.9.tgz#bb9220b581f9b8ec008d6b374e2883838afcd778"
+  integrity sha512-TpgOkgFUwN3YxqVUY0JjiHS9zh+WVfsrzj+I/W55O2m+hvwxHgZWZ+0IheieCCpoh7lDd9rkA+K2EEVG+E06iA==
   dependencies:
     ping "^0.4.0"
 
-"@adam-chalmers/wol@^1.0.4":
-  version "1.0.4"
-  resolved "https://npm.pkg.github.com/download/@adam-chalmers/wol/1.0.4/a0670fbd5e7a2f02b9920ae6b0728aff670ef3428d3b9cc20bba917978decd9a#0f364a74b12e98b1223ea060a19486cf063a55e6"
-  integrity sha512-YzdOGuJ49lEtKzE4cTpAzvjI+iIR5QIhCmyU7A51vAVlLrLUgkCygducawtNd7/85kt1g6Y7ehzzWiyIFjHi+w==
+"@adam-chalmers/wol@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@adam-chalmers/wol/-/wol-1.0.5.tgz#20355f530f9aba34da67ab86e89662cdd52399cc"
+  integrity sha512-wfJC3OeLut3yHo/Lin8zP8WxotPQ76+eQKM8sPFXcT2OiWLVb+68tbM/aBKJ76sIqle2IwxVmgspR1CftfIebA==
   dependencies:
     wol "^1.0.7"
 

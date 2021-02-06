@@ -20,7 +20,7 @@ export function attachEvents(monitor: NetworkMonitor, home: GoogleHome): void {
         try {
             await home.sendMessage(param.command);
         } catch (err) {
-            console.error(`Error sending message to google home: ${err?.message}`);
+            console.error(`Error sending message to google home: ${err.message}`);
         }
     });
 }
