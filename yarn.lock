@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@adam-chalmers/google-home@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@adam-chalmers/google-home/-/google-home-1.0.5.tgz#3475b93191019dfd450b5ac80932268ad5208b18"
-  integrity sha512-hzBZE0AyIBlilDXa+xlfZ56xqKdnvrCVKxWOVUjGOIKFFY5O0Se+ThBc45QbkE0Cx5nh6cVZgN+XE/84/EsbeQ==
+"@adam-chalmers/google-home@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@adam-chalmers/google-home/-/google-home-1.0.6.tgz#e2a728d630bbb789729db0b859bd7617ee1c957e"
+  integrity sha512-hLms+XyJUc4UW9obLeMdJY+HWaoAC9yRAfFQtcVVv+T+aUjeUJxT6QoOPbUdVFDpaHB/QxiMV2O2ztaFjRGDpA==
   dependencies:
     google-assistant "^0.7.0"
 
