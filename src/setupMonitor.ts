@@ -2,6 +2,6 @@ import { Config as NetworkMonitorConfig, NetworkMonitor } from "@adam-chalmers/n
 import { checkForMissingProperties } from "./argsHelper";
 
 export async function setupMonitor(config: NetworkMonitorConfig): Promise<NetworkMonitor> {
-    checkForMissingProperties("Network monitor settings", config, "defaults");
-    return new NetworkMonitor(config);
+  checkForMissingProperties("Network monitor settings", config, "defaults");
+  return new NetworkMonitor(config);
 }

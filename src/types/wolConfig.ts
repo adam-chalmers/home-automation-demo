@@ -1,4 +1,4 @@
 export interface WolConfig {
-    broadcastAddress: string;
-    enabled?: boolean;
+  broadcastAddress: string;
+  enabled?: boolean;
 }
