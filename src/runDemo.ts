@@ -7,6 +7,7 @@ import { DemoConfig } from "./types/demoConfig";
 import { NetworkMonitor } from "@adam-chalmers/network-monitor";
 import { attachEvents as attachHomeEvents, setupGoogleHome } from "./setupGoogleHome";
 import { attachEvents as attachWolEvents, setupWol } from "./setupWol";
+import { setupCron } from "./setupCron";
 
 function loadConfig(configPath: string): DemoConfig {
   const configFile = fs.readFileSync(configPath);
@@ -35,6 +36,7 @@ export async function run(): Promise<void> {
 
   const config = loadConfig(configPath);
   const monitor = await setupMonitor(config.monitor);
+  setupCron(monitor, config.cron);
   await addEventsAndStartMonitoring(monitor, config);
 
   chokidar.watch(configPath).on("change", () => {

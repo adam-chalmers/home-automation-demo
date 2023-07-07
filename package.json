@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.1",
+    "@types/node-cron": "^3.0.8",
     "@types/wol": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^5.59.6",
     "@typescript-eslint/parser": "^5.59.6",
@@ -45,6 +46,7 @@
     "@adam-chalmers/network-monitor": "^1.0.9",
     "@adam-chalmers/wol": "^1.0.5",
     "chokidar": "^3.4.3",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "node-cron": "^3.0.2"
   }
 }
