@@ -9,6 +9,7 @@ export interface CronConfig {
     delay: number | { min: number; max: number };
     param: { command: string };
   };
+  enabled?: boolean;
 }
 
 export function setupCron(monitor: NetworkMonitor, jobs?: CronConfig[]) {
@@ -17,7 +18,12 @@ export function setupCron(monitor: NetworkMonitor, jobs?: CronConfig[]) {
   }
 
   for (const job of jobs) {
-    console.log(`Scheduling action ${job.action.name} with pattern ${job.pattern}`);
+    if (job.enabled === false) {
+      console.log(`Action ${job.action.name} disabled - skipping cron registration`);
+      return;
+    }
+
+    console.log(`Registering cron ${job.action.name} with pattern ${job.pattern}`);
 
     schedule(job.pattern, async () => {
       let delay: number;
